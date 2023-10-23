@@ -1,0 +1,2 @@
+# LicensePlateRecognition
+Deteksi plate kendaraan
