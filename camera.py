@@ -1,26 +1,16 @@
 import cv2
-# import main as mn
-import yolov5
+import model as mn
+# import yolov5
 import numpy as np
 
-# # load model
-# model = yolov5.load('keremberke/yolov5m-license-plate')
-
-# # set model parameters
-# model.conf = 0.25  # NMS confidence threshold
-# model.iou = 0.45  # NMS IoU threshold
-# model.agnostic = False  # NMS class-agnostic
-# model.multi_label = False  # NMS multiple labels per box
-# model.max_det = 10  # maximum number of detections per image
-
-# img_test = mn.preprocess_img("dataset\platGray\E536YY.jpg")
-
-# print(mn.predict_image(img_test, mn.prediction_model_loaded))
+model_character = mn.model_character()
+model_detection = mn.model_platDetection(model_path="skiba4/license_plate")
 
 cam = cv2.VideoCapture(0)
 cv2.namedWindow('test')
 
 img_counter = 0
+fileName_detect_plate = "deteksi_plat.jpg"
 
 while True:
     ret,frame = cam.read()
@@ -29,15 +19,36 @@ while True:
         print("failed to grab frame")
         break
     
-    cv2.putText(img=frame, 
-                text="input text",
-                org=(50, 50),
-                fontFace=cv2.FONT_HERSHEY_SIMPLEX,
-                fontScale=1,
-                color=(225, 0, 222),
-                thickness=2, 
-                )
+    img = cv2.imwrite(fileName_detect_plate, frame)
     
+    deteksi_plat = model_detection.predict(fileName_detect_plate)
+
+    if deteksi_plat:
+        start_point = (deteksi_plat[0]['box']['xmin'], deteksi_plat[0]['box']['ymin'])
+        end_point = (deteksi_plat[0]['box']['xmax'], deteksi_plat[0]['box']['ymax'])
+        nomor_plat = "".join(model_character.predict_image(fileName_detect_plate))
+        
+        # put text to image
+        cv2.putText(img=frame, 
+                    text=nomor_plat,
+                    org= start_point,
+                    fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                    fontScale=1,
+                    color=(0, 0, 200),
+                    thickness=2, 
+                    )
+        
+        # put rectangle to image
+        cv2.rectangle(frame,
+                      start_point, 
+                      end_point, 
+                      (0, 255, 0), 
+                      5
+                      )
+        
+    img = cv2.imwrite("plat_detected.jpg", frame)
+    
+    # Menampilkan image
     cv2.imshow('test', frame)
     
     k = cv2.waitKey(1)
@@ -51,30 +62,6 @@ while True:
         cv2.imwrite(img_name, frame)
         print("ScreenShoot")
         img_counter += 1
-        
-        # img_test = mn.preprocess_img(img_name)
-        # print(mn.predict_image(img_test, mn.prediction_model_loaded))
 
-
-        # # perform inference
-        # results = model(img_name, size=640)
-
-        # # inference with test time augmentation
-        # results = model(img_name, augment=True)
-
-        # # parse results
-        # predictions = results.pred[0]
-        # boxes = predictions[:, :4] # x1, y1, x2, y2
-        # # scores = predictions[:, 4]
-        # # categories = predictions[:, 5]
-        # detect = cv2.rectangle(frame, 
-        #                        (0, 0), 
-        #                        (100, 100), 
-        #                        (255, 0, 222), 
-        #                        1
-        #                        )
-        # cv2.imwrite("detect{}.jpg".format(img_counter), detect)
-
-        # results.save()
         
 cam.release()
