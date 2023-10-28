@@ -19,7 +19,7 @@ while True:
         # put text to image
     if result:
         cv2.putText(img=frame, 
-                    text= " ".join([i[-2] for i in result[:4]]),
+                    text= " ".join([i[-2] for i in result[:3]]),
                     org= (50, 50),
                     fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                     fontScale=1,
@@ -38,7 +38,7 @@ while True:
         break
     
     elif k % 256 ==32:
-        img_name = "open_Cv_{}.jpg".format(img_counter)
+        img_name = "open_Cv_easyOCR{}.jpg".format(img_counter)
         cv2.imwrite(img_name, frame)
         print("ScreenShoot")
         img_counter += 1
