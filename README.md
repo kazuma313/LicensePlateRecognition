@@ -18,7 +18,7 @@ python camera.py
 ```
 
 hasil ScreenShoot:
-![Screen shoot menggunakan huggingface model dan model CNN, RNN, dan implementasi CTC loss untuk rekognasi text pada kamera](https://github.com/kazuma313/LicensePlateRecognition/plat_detected.jpg)
+![Screen shoot menggunakan huggingface model dan model CNN, RNN, dan implementasi CTC loss untuk rekognasi text pada kamera](https://raw.githubusercontent.com/kazuma313/LicensePlateRecognition/main/plat_detected.jpg)
 
 ### menjalan model yang menggunakan easyOCR:
 
@@ -27,7 +27,7 @@ python camera_easyOCR.py
 ```
 
 hasil ScreenShoot:
-![Screen shoot menggunakan model easyOCR untuk rekognasi text pada kamera](https://github.com/kazuma313/LicensePlateRecognition/open_Cv_easyOCR0.jpg)
+![Screen shoot menggunakan model easyOCR untuk rekognasi text pada kamera](https://raw.githubusercontent.com/kazuma313/LicensePlateRecognition/main/open_Cv_easyOCR0.jpg)
 
 ## Deskiripsi
 
