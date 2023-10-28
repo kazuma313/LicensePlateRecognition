@@ -1,7 +1,7 @@
 # LicensePlateRecognition
 
 - Deteksi plate menggunakan [huggingface]{https://huggingface.co/skiba4/license_plate} model dan rekognasi tulisan menggunakan CNN, RNN, dan implementasi CTC loss.
-- rekognasi tulisan menggunakan easyOCR.
+- rekognasi tulisan menggunakan easyOCR (belum menggunakan deteksi plate).
 
 ## Dataset
 
