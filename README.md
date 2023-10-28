@@ -1,6 +1,6 @@
 # LicensePlateRecognition
 
-- Deteksi plate menggunakan [huggingface]{https://huggingface.co/skiba4/license_plate} model dan rekognasi tulisan menggunakan CNN, RNN, dan implementasi CTC loss.
+- Deteksi plate menggunakan [huggingface](https://huggingface.co/skiba4/license_plate) model dan rekognasi tulisan menggunakan CNN, RNN, dan implementasi CTC loss.
 - rekognasi tulisan menggunakan easyOCR (belum menggunakan deteksi plate).
 
 ## Dataset
@@ -40,7 +40,7 @@ Saya membandingkan 2 model untuk membandingkan dan mendapatkan kesimpulan:
 
 Karna keterbatas dataset, model gagal memprediksi karakter. Jika memiliki data yang banyak, maka model akan mengenali karakter dan dapat mengantisipasi noise pada gambar.
 
-Untuk mendeteksi apakah terdapat image plate atau tidak, saya menggunakan model yang tersedia dari [huggingface]{https://huggingface.co/skiba4/license_plate}. Sehingga, jika frame pada vidio terdeteksi pelat atau tidak, maka akan dilakukan rekognasi text.
+Untuk mendeteksi apakah terdapat image plate atau tidak, saya menggunakan model yang tersedia dari [huggingface](https://huggingface.co/skiba4/license_plate). Sehingga, jika frame pada vidio terdeteksi pelat atau tidak, maka akan dilakukan rekognasi text.
 
 ### Menggunakan easyOCR
 
