@@ -45,3 +45,6 @@ Untuk mendeteksi apakah terdapat image plate atau tidak, saya menggunakan model 
 ### Menggunakan easyOCR
 
 Dapat mengenali krakter dengan baik. Jika disediakan gambar yang memiliki noise, maka easyOCR akan kesulitan mengenali karakter.
+
+### Kamera
+Program ini menggunakan opencv untuk pengambilan gambarnya. Setiap frame dideteksi karakter atau platnya. Memprediksi membutuhkan sedikit waktu bagi model, sehingga pada live vidio akan terjadi delay dikarenakan sedang melakukan prediksi. Akan saya perbaiki lebih lanjut.
